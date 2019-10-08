@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-toolbar color="pdark" style="min-height:38px">
+    <div style="font-size:14px; color:white;padding-left:5px">Approve Posts in {{pcity}} city</div>
+
+    <ion-buttons left>
+      <button ion-button class="dismiss-button" (tap)="viewCtrl.dismiss()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="new-chat">
+  <ion-list class="users">
+    <button ion-item *ngFor="let plist of plists | async" class="user" (tap)="approve(plist._id)">
+      <h2 class="user-name">{{plist.updescr}}</h2>
+    </button>
+  </ion-list>
+
+  <ion-list class="users">
+    <button ion-item *ngFor="let glist of glists | async" class="user" (tap)="approveg(glist._id)">
+      <h2 class="user-name">{{glist.updescr}}</h2>
+    </button>
+  </ion-list>
+</ion-content>

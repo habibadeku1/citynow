@@ -1,0 +1,49 @@
+<ion-header>
+
+    <ion-toolbar style="min-height:38px" color="pdark"> 
+        <ion-title>Profile View</ion-title>
+        
+        <ion-buttons left>
+            <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+          </ion-buttons>
+
+
+          <ion-buttons end>
+              
+              
+                  </ion-buttons>
+
+    </ion-toolbar>
+
+</ion-header> 
+
+ 
+
+<ion-content padding >
+ 
+
+
+
+                
+                    <img *ngIf="picture" [src]="picture"  style="width:100%;text-align:center;">
+
+                      <div style="font-size:16px; font-weight:bold">{{fname}} {{sname}}</div>
+
+                      <br>
+
+                      <div style="font-size:14px; font-weight:normal">Username: <b>{{nname}}</b></div>
+                      
+                       <br>
+
+
+                      <div style="font-size:12px;font-style:italic">Signature Text</div>
+                      <hr>
+                      <div style="font-size:14px; " >{{sigtext}}</div>
+                      
+
+
+  <br>
+
+  <hr style="clear:both;padding-top:5px">
+  
+</ion-content>

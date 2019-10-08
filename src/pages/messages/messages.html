@@ -1,0 +1,107 @@
+<ion-header>
+
+  <ion-toolbar style="min-height:38px" color="blacky"> 
+
+      <ion-buttons left>
+          <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon>
+
+            <div style="margin-left:0px;text-align:left;padding-left:7px" >
+                <img style="width: 100px;margin-top:3px" src="assets/logo2.png">       
+              </div> 
+
+          </button>
+        </ion-buttons>
+    
+    <ion-buttons>
+
+      <img style="width: 30px; height: 30px; border-radius: 50%;float:right" [src]="picture">
+
+    </ion-buttons>
+ 
+    <ion-title style="width:70%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:white; line-height: 30px;text-align:right"><div style="font-size:14px" >{{title}}</div></ion-title>
+
+    <ion-buttons end>     
+      <button ion-button icon-only class="options-button" (tap)="showOptions()"><ion-icon style="zoom:1;" name="more"></ion-icon></button>
+    </ion-buttons>
+ 
+  </ion-toolbar> 
+
+</ion-header>
+
+<ion-content class="messages-page-content" style="background-color:#DFEBCE; "> 
+
+  <ion-scroll scrollX="false" scrollY="true" class="messages" style="background-color:#DFEBCE;">
+    
+ 
+    <div *ngFor="let day of messagesDayGroups | async" class="day-wrapper"> 
+
+        <div *ngIf="!day.today" class="day-timestamp">{{day.timestamp}}</div> 
+        
+
+      <div *ngFor="let message of day.messages" class="message-wrapper"  > 
+
+        <div [class]="'message message-' + message.ownership" (press)="delMsg(message._id)">
+
+          <div *ngIf="message.type == 'text'" class="message-content message-content-text"> 
+            
+              <div class="username">{{ message.profilefName +" " + message.profilesName }} </div><br> 
+              
+          <div style="white-space:pre-line;font-weight:500">  {{message.content}} </div>
+          
+          </div>
+          
+          <img *ngIf="message.type == 'picture'" (tap)="presentImage(img1)" style="width:100px; height: auto; max-height:100px;padding: 2px 3px;" #img1 [src]="message.content"> 
+ 
+
+          <span class="message-timestamp">{{ message.createdAt | amDateFormat: 'HH:mm' }}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </ion-scroll>
+
+</ion-content> 
+
+
+<ion-footer>
+
+  <ion-toolbar color="light" class="messages-page-footer" position="bottom">
+
+      <ion-textarea rows="3" autocomplete="yes" autocorrect="yes" (ionFocus)="updateScroll()" [(ngModel)]="message" class="message-editor" placeholder="Type a message" style="font-weight:500"></ion-textarea>
+
+
+      <ion-buttons left> 
+          
+          <button ion-button icon-only class="attach-button" class="message-editor-button" (tap)="selectUploadPicture()"><ion-icon color="pdark" name="image" style="zoom:1;"></ion-icon></button>      
+          
+              </ion-buttons> 
+               
+    <ion-buttons end> 
+
+        
+ 
+      <button ion-button icon-only *ngIf="message" class="message-editor-button" (tap)="sendTextMessage()">
+
+        <ion-icon color="pdark" name="send" style="zoom:1;"></ion-icon> 
+ 
+      </button>
+
+ 
+
+      <button ion-button icon-only *ngIf="!message" class="message-editor-button">
+
+        <ion-icon color="pdark" name="albums" style="zoom:1;"></ion-icon>
+
+      </button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-footer>

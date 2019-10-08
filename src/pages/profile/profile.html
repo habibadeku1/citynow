@@ -1,0 +1,70 @@
+<ion-header>
+
+    <ion-toolbar style="min-height:38px" color="pdark"> 
+        <ion-title>Profile</ion-title>
+        
+        <ion-buttons left>
+            <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+          </ion-buttons>
+
+
+          <ion-buttons end>
+              
+                    <button ion-button class="done-button" (tap)="updateProfile()">Save</button>
+              
+                  </ion-buttons>
+
+    </ion-toolbar>
+
+</ion-header> 
+
+ 
+
+<ion-content padding >
+ 
+
+            <div style="text-align:center">
+                
+                    <img *ngIf="picture" [src]="picture"  style="width:240px;height:240px;text-align:left;border-radius:50%">
+                
+                    <ion-icon style="zoom:1.5;text-align:right" color="secondary" name="create" (tap)="selectProfilePicture()"></ion-icon>
+                
+                  </div>
+
+                  <ion-item>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input style="max-width: 95%;font-size: small;border-color:black" [(ngModel)]="profile.nname" ></ion-input>
+                  </ion-item>
+
+                  <ion-item >
+                      <ion-label stacked>Signature Text</ion-label>
+                      <ion-textarea maxlength="100" row="2" style="max-width: 95%;font-size: small;border-color:black" [(ngModel)]="profile.sigtext" placeholder="write anything as your signature..." ></ion-textarea>
+                    </ion-item>
+
+                    <br>
+<div style="text-align:center;font-size:10px;color:#888"> //Contact admin to change your first name and surname after sign up. </div>
+              
+                <ion-item>
+                    <ion-label floating>First Name</ion-label>
+                    <ion-input disabled="true" style="max-width: 95%;font-size: small;border-color:black" [(ngModel)]="profile.fname" ></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label floating>Surname</ion-label>
+                      <ion-input disabled="true" style="max-width: 95%;font-size: small;border-color:black" [(ngModel)]="profile.sname" ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Phone Number</ion-label>
+                        <ion-input disabled="true"  style="max-width: 95%;font-size: small;border-color:black" [(ngModel)]="profile.phone"  type="phone"></ion-input>
+                      </ion-item>
+                      <div style="color:#888;font-size:10px;padding-right:10px;text-align:center" >**only you can see your phone number.</div>
+ 
+                      
+
+
+  <br>
+
+  <hr style="clear:both;padding-top:5px">
+  
+</ion-content>

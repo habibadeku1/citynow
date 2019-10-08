@@ -1,0 +1,72 @@
+<ion-header>
+        
+    <ion-toolbar style="min-height:38px" color="blacky"> 
+        
+         
+        <div style="padding-left:10px; font-size:16px;width:90%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:white" >Tsokaci</div>
+        
+    
+        <ion-buttons left>
+          <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon>
+
+            <div style="margin-left:0px;text-align:left;padding-left:7px" >
+                <img style="width: 100px;margin-top:3px" src="assets/logo2.png">       
+              </div> 
+
+          </button>
+        </ion-buttons>
+          
+            </ion-toolbar>
+            
+             
+            </ion-header>
+             
+            
+            <ion-content >  
+             
+            
+            
+                <div style="margin:0 auto;width:90%; padding-bottom: 3px;padding-top: 5px;border-width:3px; border-color:black;border:3px"  *ngFor="let ev of citycoms | async">
+                    
+                  <div style="padding-left:2px;padding-right:2px; margin:0 auto;max-width:100%;background-color:#F1F1F1; border-radius: 2px; color:black;text-align:left;padding-top:4px;padding-bottom:4px;font-size:13px" (tap)="viewprofile(ev)"><u>{{ev.profilefName}} {{ev.profilesName}}</u> <font style="color:#567656" > a rubuce: </font><font style="float:right;font-size:12px;margin-top:0px;color:black">{{ev.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a'}}</font></div>
+        
+                  <div style="margin-top:2px; font-size:14px;word-wrap:break-word; width:95%;"><div style="white-space:pre-line;font-weight:500"> {{ev.content}} </div></div>
+                  
+                  <hr>
+                    
+                </div>  
+              
+            </ion-content>
+            
+            <ion-footer>
+            
+              <ion-toolbar color="light" class="citycoms-page-footer" position="bottom">
+        
+                  <ion-textarea autocomplete="yes" autocorrect="yes" rows="3" [(ngModel)]="citycom"  class="citycom-editor" placeholder="Write a comment" style="font-size:14px;font-weight:500"></ion-textarea>
+                  
+           
+            
+                <ion-buttons end>   
+                 
+            
+                  <button  ion-button icon-only *ngIf="citycom" class="citycom-editor-button" (click)="sendTextMessage()">
+            
+                    <ion-icon color="sdark" name="send"></ion-icon>
+            
+                  </button>
+            
+             
+            
+                  <button  ion-button icon-only *ngIf="!citycom" class="citycom-editor-button">
+            
+                    <ion-icon color="sdark" name="albums"></ion-icon>
+            
+                  </button>
+            
+                </ion-buttons>
+            
+              </ion-toolbar>
+            
+        
+            
+            </ion-footer>

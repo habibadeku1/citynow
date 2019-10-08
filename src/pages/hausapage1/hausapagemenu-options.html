@@ -1,0 +1,25 @@
+<ion-content class="chats-options-page-content">
+  <ion-list class="options">
+
+    <button style="background-color:#FFFFD5" *ngIf="checkuser" ion-item class="option option-logout" (click)="deletePost()">
+      <div class="option-name">Delete this post</div>
+    </button> 
+
+    <div *ngIf="!checkf" >
+    <button style="background-color:#FFFFD5" *ngIf="!checkuser" ion-item (click)="followPost()">
+        <div class="option-name">Follow this post</div>
+      </button>
+    </div>
+
+    <div *ngIf="checkf" >
+        <button style="background-color:#FFFFD5" *ngIf="!checkuser" ion-item (click)="unfollowPost()">
+            <div class="option-name">Unfollow this post</div>
+          </button>
+        </div> 
+
+      <button style="background-color:#FFFFD5" *ngIf="!checkuser" ion-item (click)="reportPost(selectedCity._id)">
+          <div class="option-name" style="color:red">Report this post</div>
+        </button>
+
+  </ion-list>
+</ion-content>

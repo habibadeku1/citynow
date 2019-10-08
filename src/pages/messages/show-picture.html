@@ -1,0 +1,24 @@
+<ion-header>
+      
+  <ion-toolbar style="min-height:38px" color="pdark"> 
+     
+          <ion-buttons left>
+      
+            <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon name="close"></ion-icon></button>
+       
+          </ion-buttons> 
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+ 
+
+<ion-content class="show-picture">
+  <ion-scroll  direction="xy"  zooming="true"  min-zoom="1.0"  max-zoom="2.5"  overflow-scroll="false"  has-bouncing="false"  >    
+  <img class="picture" [src]="pictureSrc">
+
+  </ion-scroll>
+
+</ion-content>

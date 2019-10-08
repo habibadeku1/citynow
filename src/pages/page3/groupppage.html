@@ -1,0 +1,137 @@
+<ion-header>
+    
+      <ion-toolbar style="min-height:38px" color="blacky"> 
+    
+          <ion-buttons left>
+              <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon>
+
+                <div style="margin-left:0px;text-align:left;padding-left:7px" >
+                    <img style="width: 100px;margin-top:3px" src="assets/logo2.png">       
+                  </div> 
+
+              </button>
+            </ion-buttons>
+        
+    
+        <ion-title style="line-height: 30px;text-align:right"><div style="font-size:14px" >{{selectedGroup.title}}</div></ion-title>
+    
+    
+      </ion-toolbar> 
+     
+</ion-header>
+
+
+<ion-content  >
+    
+            <div style="text-align:center; height:25px; padding-top:7px; ">
+            <button  (tap)="grouppostentry(selectedGroup._id)" style="width:100%; height:25px;background-color:white;"  >
+              <div style="font-size:13px;color:#888;text-align:center">Post a story/update on this group in Kaduna city...<ion-icon name="create" color="sdark" style="zoom:0.7;"></ion-icon> </div>
+            </button>
+            </div>
+
+        <hr style="clear:both; padding-top:8px"> 
+<div>
+        <div *ngIf="!checkf" style="padding-right:5px;text-align:right">
+          
+            <button style="padding-bottom:0px;background-color:transparent" (tap)="followgp(selectedGroup._id)" ><ion-badge style="margin-top:0px;font-size:12px;color:white" color="primary" item-end small>Not Following //click to follow</ion-badge> </button> </div>
+        
+        <div *ngIf="checkf" style="padding-right:5px;text-align:right"> 
+          
+            <button style="padding-bottom:0px;background-color:transparent" (tap)="unfollowgp(selectedGroup._id)" ><ion-badge style="margin-top:0px;font-size:12px;color:white" color="sdark" item-end small>Following //click to unfollow</ion-badge> </button>
+            </div>
+</div>  
+
+<hr style="clear:both;width:90%">  
+
+
+<div style="margin-top:-2px" *ngFor=" let grouppost of groupposts  | async">
+
+
+
+    <div *ngIf="grouppost.posttype=='userpost'" >
+
+       
+       <div color="whitish" style="padding-left:10px; padding-top:0px; padding-right:10px"  >&nbsp;
+       <div style="margin-top:-10px"><img style="border-radius: 50%;width: 30px;float: left;background:#999;padding:1px" *ngIf="grouppost.posterpicture" [src]="grouppost.posterpicture" (tap)="viewprofile(grouppost)">
+       
+         <div style="margin-top:0px;">  <span style="line-height:30px; margin-top:0px; text-align:left; font-size:10px;font-weight:bold;" (tap)="viewprofile(grouppost)">&nbsp;{{grouppost.postername}} &nbsp;&nbsp;&nbsp;&nbsp;<font style="margin-top:0px; font-weight:normal; color:#777">Wrote:</font></span> <div style="line-height:0px; margin-top:-15px; text-align:right;font-size:9px;padding-right:20px;">{{ grouppost.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }}</div>   <button style="width:20px; padding:0px;float:right;background-color:white" (tap)="menuOptions(grouppost)">
+             <ion-icon name="more" color="pdark" style="zoom:2;line-height:0px;margin-top:0px;"></ion-icon></button></div>               
+       
+       </div>  
+                      
+       </div>
+       
+       <div style="padding-left:7px; padding-top:0px; padding-right:7px;">
+       <br style="clear:both;">
+       <button *ngIf="grouppost.picture" style="width:100%;background-color:white;" (tap)="showpage(grouppost)" >  
+         <div *ngIf="grouppost.uptitle" style="font-size:14px; font-weight:bold; color:black"><u>{{grouppost.uptitle}}</u></div>
+       
+         <ion-grid style="padding:0px" *ngIf="grouppost.picture || grouppost.picture2 || grouppost.picture3">
+           <ion-row >
+             <ion-col style="max-width:70px" >  
+                 <div *ngIf="grouppost.picture || grouppost.picture2 || grouppost.picture3" style="font-size:12px; color:#999990;text-align:left">
+                     <img *ngIf="grouppost.picture" style="border-radius: 10%;width: 60px;height:60px;background:#999;text-align:left" [src]="grouppost.picture">
+                    </div>
+             </ion-col> 
+             <ion-col>
+                
+                    <div style="line-height:15px;font-size:16px; color:black;text-align:left">{{grouppost.updescr.slice(0,90) + "..."}}</div>          
+             </ion-col>
+           </ion-row>
+         </ion-grid> 
+       
+         <div *ngIf="grouppost.upsource" style="font-size:12px; color:#484848;text-align:left">Source: {{grouppost.upsource}}</div>              
+       </button>
+       
+       <button *ngIf="!grouppost.picture" style="width:100%;background-color:white;" (tap)="showpage(grouppost)" >  
+           <div *ngIf="grouppost.uptitle" style="font-size:14px; font-weight:bold; line-height:20px; color:black"><u>{{grouppost.uptitle}}</u></div>
+           <div *ngIf="grouppost.updescr" style="font-size:14px; line-height:20px; color:black;text-align:left;width:98%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">{{grouppost.updescr}}</div>
+        
+           <div *ngIf="grouppost.upsource" style="font-size:12px; color:#484848;text-align:left">Source: {{grouppost.upsource}}</div>              
+         </button>
+       
+       </div>  
+       
+       <hr style="max-width:95%">
+           
+                       <div style="text-align:center; margin-top:-5px; margin-bottom:0px">
+           
+                            <button style="height:18px; " color="sdark" ion-button icon-left clear small (tap)="pushgood(grouppost._id)" > 
+                               <ion-icon name="thumbs-up" style="zoom:1.0;"></ion-icon>
+                               <div style="text-transform:none; font-size:11px">{{grouppost.goodcount}} Like</div> 
+                             </button>
+           
+                             <button style="height:18px" color="danger" ion-button icon-left clear small (tap)="pushnotgood(grouppost._id)" > 
+                                 <ion-icon name="thumbs-down" style="zoom:1.0;"></ion-icon>
+                                 <div style="text-transform:none; font-size:11px">{{grouppost.notgoodcount}} Dislike</div>
+                               </button>
+       
+                               <button style="height:18px; color:#888" ion-button icon-left clear small (tap)="showComments(grouppost)">
+                                   <ion-icon name="text" style="zoom:1.0;"></ion-icon>
+                                   <div style="text-transform:none; font-size:11px">                                            
+                                     {{grouppost.comcount}} Comment(s)</div>
+                                 </button>
+           
+                       </div>
+       
+           
+           
+                     <div *ngIf="grouppost.lastComment"> 
+                         <div *ngIf="grouppost.lastComment.type == 'text'">
+                           <div style="float:left;padding-left:10px;padding-right:5px;font-size:12px;margin-bottom:0px;margin-top:0px;color:#777;font-style:italic;padding-bottom:2px;width:99%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">Last comment:  {{ grouppost.lastComment.createdAt | amCalendar }} <font style="font-style:normal">by <u>{{grouppost.lastComment.profilefName}}</u> : {{grouppost.lastComment.content}} </font> </div>
+                         </div>
+                     </div>
+
+
+        <hr style="clear:both;padding-top:5px">
+        
+       
+       </div>
+
+
+
+
+
+  </div>
+        
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+        <ion-toolbar style="min-height:38px;background-color:black" color="blacky"> 
+                <ion-buttons left>
+                      <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon name="arrow-back"></ion-icon></button>
+                 </ion-buttons>
+                <ion-title>
+                        <div style="margin-left:-15px;text-align:center;padding-left:5px" >
+                                <img style="width: 110px;margin-top:5px" src="assets/logo2.png">       
+                              </div> 
+                </ion-title>
+              </ion-toolbar>  
+</ion-header>
+   
+   
+  
+  <ion-content padding>
+
+    <br><br><br><br><br>
+
+    <form [formGroup]="eForm1"> 
+        
+            <div style="padding-left:10px;font-size:20px;font-weight:bold;color:black;text-align:left;width:100%">Choose a city and language preference.</div>
+           
+            <br>
+   
+            <ion-item > 
+                <ion-select placeholder="City" style="font-size: 16px;width:80%; font-weight:bold" formControlName="pcity" [selectOptions]="selectOptions" (ionChange)="cityselect(cityname)" >
+                  <ion-option style="width:100%"  value="Kaduna" [selected]="Kaduna">Kaduna</ion-option>                
+                  <ion-option style="width:100%" disabled >Abuja City (Coming Soon)</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="!eForm1.controls.pcity.valid  && (eForm1.controls.pcity.dirty || submitAttempt)">
+                    <p style="color: #ea6153; font-size:12px">Please select a preferred city.</p>
+                </ion-item>
+
+            <br>
+   
+            <ion-item > 
+                <ion-select [disabled]="langDisabled" placeholder="Language" style="font-size: 16px;width:80%; font-weight:normal" formControlName="plang" [selectOptions]="selectOptions1" >
+                  <ion-option style="width:100%"  value="English" [selected]="English" >English</ion-option>                
+                  <ion-option style="width:100%"  value="Hausa" >Hausa</ion-option>                
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="!eForm1.controls.plang.valid  && (eForm1.controls.plang.dirty || submitAttempt)">
+                    <p style="color: #ea6153; font-size:12px">Please select a preferred language.</p>
+                </ion-item>
+   
+  
+            <br>
+  
+            <div style="padding-left:0px;font-size:12px;font-weight:bold;color:green;text-align:center;width:100%" >Don't worry, you can always change your preference later.</div>        
+  
+            <br>
+            
+            <br>
+            
+            <button style="height:25px;float:right;text-transform:none" ion-button color="secondary" class="button button-block" (tap)="guestup()"><font style="color:black"> Continue as Guest! </font></button>
+          
+          </form>
+  
+  
+  </ion-content>

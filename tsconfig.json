@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "paths": {
+      "api/*": ["./src/api/server/*"]
+    },
+    "sourceMap": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false,
+    "types": [
+      "@types/meteor",
+      "@types/meteor-collection-hooks"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+    //"api/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/api/node_modules",
+    "src/api"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar style="min-height:38px;background-color:black" color="blacky"> 
+    <ion-title>
+        <div style="text-align:center;padding-left:5px" >
+            <img style="width: 110px;margin-top:5px" src="assets/logo2.png">       
+          </div> 
+              </ion-title>
+      </ion-toolbar>
+</ion-header>
+ 
+ 
+
+<ion-content padding>
+<br><br>
+
+<hr>
+              <div style="padding-left:10px;font-size:25px;font-weight:bold;color:black;text-align:left;width:100%">Verification</div>
+              
+
+              <br>
+              
+                <div style="color:#263238;text-align:center;font-size: medium;text-align:center">An Email with your Secure One Time Password has been sent to <div style="font-weight:bold">"{{user}}". Please check all your inbox folders.</div></div>
+              <br>
+                  <div style="color:green;text-align:center;font-size: small;">  
+              
+                    To proceed, please enter the 6-digit secure one time password below.
+              
+                  </div>
+               
+                <ion-item> 
+              
+                  <ion-input text-center style="max-width: 80%;margin: 0 auto;font-size:large; font-weight:bold;" [(ngModel)]="code" type="number" placeholder="enter password here"><div style="text-align:center" > </div></ion-input>
+              
+                </ion-item>
+
+                
+                <br>
+              
+                      <button style="max-width: 80%;margin: 0 auto;font-size:18px;font-weight:bold" ion-button color="secondary" class="button button-block" (click)="verify()"><font style="color:black">Verify</font></button>
+                        
+                    <br>
+
+                    <hr>
+
+
+
+</ion-content>

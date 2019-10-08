@@ -1,0 +1,8 @@
+{
+  "name": "citynow",
+  "app_id": "0e52c94b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

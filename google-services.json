@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1051573918246",
+    "firebase_url": "https://citynow-69b1c.firebaseio.com",
+    "project_id": "citynow-69b1c",
+    "storage_bucket": "citynow-69b1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051573918246:android:1f6119b31a4d77ad",
+        "android_client_info": {
+          "package_name": "com.citynow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051573918246-h6opj0hl6e1s8k6q1sg465fr6vr8sssv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ae3SkaeXZPpQFthI7vGlQSzF0KixXEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,47 @@
+<ion-header>
+        
+            <ion-toolbar style="min-height:38px" color="pdark"> 
+                
+                <ion-buttons left>
+                    <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+                  </ion-buttons>
+        
+                <div style="font-size:14px;font-weight:bold;color:red"> Report this post to CityNow Admin </div>
+        
+                <ion-buttons end>
+                    
+                          <button ion-button class="done-button" (tap)="save()">SEND</button>
+                    
+                        </ion-buttons>
+        
+            </ion-toolbar>
+        
+        </ion-header>
+        
+        <ion-content style="background-color:#F8F8F8" >
+        <form [formGroup]="eForm1" >
+                        
+            <hr>
+            <div style="text-align:center">
+            &nbsp;&nbsp;
+            <div style="display:inline">        <img *ngIf="picture" [src]="picture" style="width:30px;border-radius: 50%;margin-bottom:-6px">
+            </div>    
+            &nbsp;&nbsp;
+            
+            </div> 
+            <hr>  
+
+            <ion-item>
+             <ion-textarea [(ngModel)]="updescr" formControlName="updescr" rows="8" style="font-size:16px;" placeholder="Complain or Observation about the post..."></ion-textarea>
+            </ion-item>
+    
+
+            <br>
+
+    
+            
+        </form>
+      
+ 
+        
+        </ion-content>

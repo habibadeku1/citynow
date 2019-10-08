@@ -1,0 +1,44 @@
+<ion-content class="chats-page-content">
+
+
+  <div *ngIf="isGuest" >
+    
+
+
+        <ion-list class="chats"> 
+                <ion-item-sliding *ngFor="let chat of chats | async">
+                  <button ion-item class="chat" (tap)="showMessages(chat)"> 
+                    
+                    <img class="chat-picture" [src]="chat.picture" style="background:#999;padding:1px">
+          
+                    <div style="padding-left:10px; margin-top:10px;">&nbsp;&nbsp;&nbsp;{{chat.title}} <div *ngIf="chat.mybadge"> <ion-badge style="float:right;margin-top:-15px;font-size:10px;color:white" item-end small>{{chat.mybadge.badgecount}}</ion-badge> </div>
+                          </div>                               
+                    
+                    <div *ngIf="chat.lastMessage"> 
+                          <div *ngIf="chat.lastMessage.type == 'text'" class="last-message-content" style="margin-top:0px;font-size:11px;width:75%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ chat.lastMessage.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }}~{{chat.lastMessage.profilefName}}: {{chat.lastMessage.content}}</div>
+                    </div> 
+          
+                  </button>
+
+                </ion-item-sliding>
+              </ion-list>
+
+  </div>
+
+  <div *ngIf="!isGuest" style="text-align:center;padding-top:5px;margin-bottom:-3px">
+      <button  (tap)="loginpage()" ion-text style="background-color:white;text-align:center"  >
+        
+        <div style="font-size:14px;color:#888;font-style:italic;padding-left:8px;padding-right:8px;text-align:center;padding-top: 50%"> You are viewing as guest. Click here to Signup for a user account. </div>
+       
+      </button>
+  </div>
+
+
+            
+</ion-content> 
+
+<ion-fab bottom right edge mini style="z-index:100;padding-bottom:45px;padding-right:5px">
+    <button ion-fab color="sdark" (tap)="addChat()" ><ion-icon name="person-add"></ion-icon></button>
+</ion-fab>
+
+

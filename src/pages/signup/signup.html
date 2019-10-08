@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar style="min-height:38px;background-color:black" color="blacky"> 
+    <ion-buttons left>
+          <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon name="arrow-back"></ion-icon></button>
+     </ion-buttons>
+    <ion-title>
+            <div style="margin-left:-15px;text-align:center;padding-left:5px" >
+                    <img style="width: 110px;margin-top:5px" src="assets/logo2.png">       
+                  </div> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding >
+
+
+ <ion-slides #joinaddSlider pager>
+  <ion-slide style="margin-top:-50px" scroll="no" >
+
+  <form [formGroup]="slideOneForm">  
+
+    <div style="padding-left:10px;font-size:20px;font-weight:bold;color:black;text-align:left;width:100%">Hi, let's get to know you.</div>
+
+    <p *ngIf="submitAttempt" style="color: #ea6153; font-size:14px">Please fill out all details accurately.</p>
+
+    <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input style="font-size: large;"  type="text" formControlName="fnamegp"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!slideOneForm.controls.fnamegp.valid  && (slideOneForm.controls.fnamegp.dirty || submitAttempt)">
+        <p style="color: #ea6153; font-size:12px">Please enter a valid first name.</p>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label floating>Surname</ion-label>
+        <ion-input style="font-size: large;"  type="text" formControlName="snamegp"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!slideOneForm.controls.snamegp.valid  && (slideOneForm.controls.snamegp.dirty || submitAttempt)">
+        <p style="color: #ea6153; font-size:12px">Please enter a valid surname.</p>
+    </ion-item>
+
+
+    <br>
+
+    <br>
+
+    <button style="width:40px; height:20px;float:right;text-transform:none" ion-button color="secondary" class="button button-block" (click)="getF1()"><font style="color:black"> Next </font></button>
+    
+
+  </form>
+
+  </ion-slide>
+
+  <ion-slide style="margin-top:-50px" scroll="no" >
+      
+        <form [formGroup]="slideTwoForm"> 
+      
+          <div style="padding-left:10px;font-size:20px;font-weight:bold;color:black;text-align:left;width:100%">Choose a city and language preference.</div>
+         
+          <br>
+ 
+          <ion-item > 
+                <ion-select placeholder="City" style="font-size: 16px;width:80%; font-weight:bold" formControlName="pcity" [selectOptions]="selectOptions" (ionChange)="cityselect(cityname)" >
+                  <ion-option style="width:100%"  value="Kaduna" [selected]="Kaduna">Kaduna</ion-option>                
+                  <ion-option style="width:100%" disabled >Abuja City (Coming Soon)</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="!slideTwoForm.controls.pcity.valid  && (slideTwoForm.controls.pcity.dirty || submitAttempt)">
+                    <p style="color: #ea6153; font-size:12px">Please select a preferred city.</p>
+                </ion-item>
+            <br>
+   
+            <ion-item > 
+                <ion-select [disabled]="langDisabled" placeholder="Language" style="font-size: 16px;width:80%; font-weight:normal" formControlName="plang" [selectOptions]="selectOptions1" >
+                  <ion-option style="width:100%"  value="English" [selected]="English" >English</ion-option>                
+                  <ion-option style="width:100%"  value="Hausa" >Hausa</ion-option>                
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="!slideTwoForm.controls.plang.valid  && (slideTwoForm.controls.plang.dirty || submitAttempt)">
+                    <p style="color: #ea6153; font-size:12px">Please select a preferred language.</p>
+                </ion-item>
+  
+
+          <br>
+
+          <div style="padding-left:0px;font-size:12px;font-weight:bold;color:green;text-align:center;width:100%" >Don't worry, you can always change your preference later.</div>        
+
+          <br>
+          
+          <br>
+          
+          <button style="width:40px; height:20px;float:right;text-transform:none" ion-button color="secondary" class="button button-block" (click)="getF2()"><font style="color:black"> Next </font></button>
+        
+        </form>
+      
+   </ion-slide>
+
+   <ion-slide style="margin-top:-10px" scroll="no" >
+    
+      <form [formGroup]="slideThreeForm">  
+    
+        <div style="padding-left:10px;font-size:20px;font-weight:bold;color:black;text-align:left;width:100%">One last step...</div>
+
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input style="font-size: large;"  type="text" formControlName="nname"></ion-input>
+        </ion-item>
+        <div style="font-size:10px; text-align:center;color:#777;">>>This is your unique name on CityNow</div>       
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input style="font-size: large;"  type="email" formControlName="emailgp"></ion-input>
+        </ion-item>
+        <div style="font-size:10px; text-align:center;color:#777;">>>Your secure one time password will be sent to your email</div>
+        
+        <ion-item *ngIf="!slideThreeForm.controls.emailgp.valid  && (slideThreeForm.controls.emailgp.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-size:12px">Please enter a valid email address.</p>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label floating>Phone number</ion-label>
+            <ion-input style="font-size: large;"  type="number" formControlName="phonegp"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!slideThreeForm.controls.phonegp.valid  && (slideThreeForm.controls.phonegp.dirty || submitAttempt)">
+            <p style="color: #ea6153; font-size:12px">Please enter a valid phone number.</p>
+        </ion-item>
+
+        <div style="font-size:10px; text-align:center;color:#999;">//Your email and phone number are private and not shared with anyone on CityNow</div>
+         
+    
+        <br>
+    
+        <button style="height:30px;float:center;font-size:18px;font-weight:bold;width:99%;text-align:center" ion-button color="secondary" class="button button-block" (tap)="signup()"> <font style="color:black"> Sign up </font> </button>
+      </form>
+      <br>
+      <div style="text-align:center;font-size:11px;text-transform: none;" >By signing up, you agree to the <a style="color:#222" href="#" onclick="window.open('http://www.citynow.ng/legal/terms-and-conditions.html', '_system');">Terms of Service</a> of CityNow.</div> 
+    
+      </ion-slide>
+
+ </ion-slides>
+
+
+    
+</ion-content>

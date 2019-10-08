@@ -1,0 +1,185 @@
+<ion-content  >
+
+
+
+          <div *ngIf="isGuest" style="font-size:20px;text-align:center;margin-left:-5px;margin-top:0px;padding-bottom:2px">
+              <img *ngIf="picture" [src]="picture" style="width:40px;height:40px;border-radius: 50%;margin-bottom:-25px;background:#999;padding:1px"> 
+          
+              <button (tap)="citypost()" ion-text style="background-color:white;text-align:left;"  >
+                
+                <div style="font-size:11px;color:#888;font-style:normal;margin-top:-5px"> Barka da shigowa <b>{{fname}}</b> </div>
+                <div style="font-size:13px;color:#888;width:100%">Aika sabon labari a birnin {{pcity}} city...<ion-icon name="create" color="sdark" style="zoom:1.1;"></ion-icon></div>
+               
+              </button>
+               
+          </div>  
+          
+          <div *ngIf="!isGuest" style="text-align:center;padding-top:5px;margin-bottom:-3px">
+              <button  (tap)="loginpage()" ion-text style="background-color:white;text-align:center"  >
+                
+                <div style="font-size:14px;color:#888;font-style:italic;margin-top:0px; text-align:center;padding-left:3px;padding-right:3px"> A matsayin Mai ziyara, latsa nan domin bude shafi ko da yaushe. </div>
+               
+              </button>
+          </div>
+              
+        <hr style="clear:both; padding-top:7px">
+                
+
+  <div style="margin-top:-2px" *ngFor=" let citypost of cityposts  | async">
+
+    <div *ngIf="citypost.posttype=='adminpost'" >
+                  
+      <div color="whitish" style="padding-left:10px; padding-top:0px; padding-right:10px"  >&nbsp;
+        <div style="margin-top:-10px"><img style="border-radius: 50%;width: 30px;float: left;background:#999;padding:1px" *ngIf="citypost.posterpicture" [src]="citypost.posterpicture" (tap)="viewprofile(citypost)">
+        
+          <div style="margin-top:0px;">  <span style="line-height:30px; margin-top:0px; text-align:left; font-size:10px;font-weight:bold;">&nbsp;{{citypost.postername}} &nbsp;&nbsp;&nbsp;&nbsp;<font style="margin-top:0px; font-weight:normal; color:#777">a rubuce:</font></span> <div style="line-height:0px; margin-top:-15px; text-align:right;font-size:9px;padding-right:20px;">{{ citypost.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }}</div>   </div>               
+        
+        </div> 
+                       
+        </div>
+        
+          <div style="padding-left:7px; padding-top:0px; padding-right:7px;text-align:center">
+            <br style="clear:both;">
+              <div style="font-size:14px; font-weight:bold; font-family:Arial; line-height:20px; color:black;text-align:center"><u>{{citypost.uptitle}}</u></div>
+            
+              <div *ngFor=" let admincitypost of admincityposts  | async" >
+                
+
+                <div *ngIf="admincitypost.updescr != '' && admincitypost.cpid==citypost.cpid" >
+                <button style="text-overflow:ellipsis; overflow: hidden;padding-top:5px;padding-bottom:5px;background-color:white; font-family:Arial;" (tap)="showpage(admincitypost)" ><u>{{admincitypost.uptitle}}</u></button>
+                </div>
+
+              </div>
+
+              <div *ngIf="citypost.upsource" style="font-size:12px; line-height:20px; color:#484848;text-align:left">Majiya: {{citypost.upsource}}</div>              
+                                    
+          </div>
+
+          <hr style="max-width:95%">
+                    
+          <div >
+              
+              <div style="text-align:center; margin-top:-5px; margin-bottom:-5px">
+                  
+                               <button style="height:18px; " color="sdark" ion-button icon-left clear small (tap)="pushgood(citypost._id)" > 
+                                  <ion-icon name="thumbs-up" style="zoom:1.0;"></ion-icon>
+                                  <div style="text-transform:none; font-size:11px">{{citypost.goodcount}} Muradi</div> 
+                                </button>
+              
+                                <button style="height:18px" color="danger" ion-button icon-left clear small (tap)="pushnotgood(citypost._id)" > 
+                                    <ion-icon name="thumbs-down" style="zoom:1.0;"></ion-icon>
+                                    <div style="text-transform:none; font-size:11px">{{citypost.notgoodcount}} Rashin Muradi</div>
+                                  </button>
+          
+                                  <button style="height:18px; color:#888" ion-button icon-left clear small (tap)="showComments(citypost)">
+                                      <ion-icon name="text" style="zoom:1.0;"></ion-icon>
+                                      <div style="text-transform:none; font-size:11px">                                            
+                                        {{citypost.comcount}} Tsokaci</div>
+                                    </button>
+              
+                          </div>
+          
+              
+                        </div>
+
+                        <div *ngIf="citypost.lastComment"> 
+                            <div *ngIf="citypost.lastComment.type == 'text'">
+                              <div style="float:left;padding-left:10px;padding-right:5px;font-size:12px;margin-bottom:0px;margin-top:0px;color:#777;font-style:italic;padding-bottom:2px;width:99%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">Tsokacin Karshe:  {{ citypost.lastComment.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }} <font style="font-style:normal">na <u>{{citypost.lastComment.profilefName}}</u> : {{citypost.lastComment.content}} </font> </div>
+                            </div>
+                        </div>
+  
+          <hr style="clear:both;padding-top:5px">
+          
+  </div>
+
+
+
+
+<div *ngIf="citypost.posttype=='userpost'" >
+
+ 
+<div color="whitish" style="padding-left:10px; padding-top:0px; padding-right:10px"  >&nbsp;
+
+<div style="margin-top:-10px"><img style="border-radius: 50%;width: 30px;float: left;background:#999;padding:1px" *ngIf="citypost.posterpicture" [src]="citypost.posterpicture" (tap)="viewprofile(citypost)">
+
+  <div style="margin-top:0px;">  <span style="line-height:30px; margin-top:0px; text-align:left; font-size:10px;font-weight:bold;" (tap)="viewprofile(citypost)">&nbsp;{{citypost.postername}} &nbsp;&nbsp;&nbsp;&nbsp; <font style="margin-top:0px; font-weight:normal; color:#777">a rubuce:</font></span> <div style="line-height:0px; margin-top:-15px; text-align:right;font-size:9px;padding-right:20px;">{{ citypost.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }}</div>   <button style="width:20px; padding:0px;float:right;background-color:white" (tap)="menuOptions(citypost)">
+      <ion-icon name="more" color="pdark" style="zoom:2;line-height:0px;margin-top:0px;"></ion-icon></button></div>               
+
+</div>  
+  </div>  
+
+
+<div style="padding-left:7px; padding-top:0px; padding-right:7px;">
+<br style="clear:both;">
+<button *ngIf="citypost.picture" style="width:100%;background-color:white;" (tap)="showpage(citypost)" >  
+  <div *ngIf="citypost.uptitle" style="font-size:14px; font-weight:bold; color:black"><u>{{citypost.uptitle}}</u></div>
+
+  <ion-grid style="padding:0px" *ngIf="citypost.picture || citypost.picture2 || citypost.picture3">
+    <ion-row >
+      <ion-col style="max-width:70px" >  
+          <div *ngIf="citypost.picture || citypost.picture2 || citypost.picture3" style="font-size:12px; color:#999990;text-align:left">
+              <img *ngIf="citypost.picture" style="border-radius: 10%;width: 60px;height:60px;background:#999;text-align:left" [src]="citypost.picture">
+             </div>
+      </ion-col> 
+      <ion-col>
+             <div style="line-height:15px;font-size:16px; color:black;text-align:left">{{citypost.updescr.slice(0,90) + "..."}}</div>          
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+
+  <div *ngIf="citypost.upsource" style="font-size:12px; color:#484848;text-align:left">Majiya: {{citypost.upsource}}</div>              
+</button>
+
+<button *ngIf="!citypost.picture" style="width:100%;background-color:white;" (tap)="showpage(citypost)" >  
+    <div *ngIf="citypost.uptitle" style="font-size:14px; font-weight:bold; line-height:20px; color:black"><u>{{citypost.uptitle}}</u></div>
+    <div *ngIf="citypost.updescr" style="font-size:14px; line-height:20px; color:black;text-align:left;width:98%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">{{citypost.updescr}}</div>
+ 
+    <div *ngIf="citypost.upsource" style="font-size:12px; color:#484848;text-align:left">Majiya: {{citypost.upsource}}</div>              
+  </button>
+
+</div>  
+
+<hr style="max-width:95%">
+    
+                <div style="text-align:center; margin-top:-5px; margin-bottom:0px">
+    
+                     <button style="height:18px; " color="sdark" ion-button icon-left clear small (tap)="pushgood(citypost._id)" > 
+                        <ion-icon name="thumbs-up" style="zoom:1.0;"></ion-icon>
+                        <div style="text-transform:none; font-size:11px">{{citypost.goodcount}} Muradi</div> 
+                      </button>
+    
+                      <button style="height:18px" color="danger" ion-button icon-left clear small (tap)="pushnotgood(citypost._id)" > 
+                          <ion-icon name="thumbs-down" style="zoom:1.0;"></ion-icon>
+                          <div style="text-transform:none; font-size:11px">{{citypost.notgoodcount}} Rashin Muradi</div>
+                        </button>
+
+                        <button style="height:18px; color:#888" ion-button icon-left clear small (tap)="showComments(citypost)">
+                            <ion-icon name="text" style="zoom:1.0;"></ion-icon>
+                            <div style="text-transform:none; font-size:11px">                                            
+                              {{citypost.comcount}} Tsokaci</div>
+                          </button>
+    
+                </div>
+
+    
+    
+              <div *ngIf="citypost.lastComment"> 
+                  <div *ngIf="citypost.lastComment.type == 'text'">
+                    <div style="float:left;padding-left:10px;padding-right:5px;font-size:12px;margin-bottom:0px;margin-top:0px;color:#777;font-style:italic;padding-bottom:2px;width:99%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">Tsokacin Karshe:  {{ citypost.lastComment.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }} <font style="font-style:normal">na <u>{{citypost.lastComment.profilefName}}</u> : {{citypost.lastComment.content}} </font> </div>
+                  </div>
+              </div>
+
+<hr style="clear:both;padding-top:5px">
+
+</div>
+
+
+  </div>
+
+
+        
+</ion-content>
+
+<ion-fab bottom right edge mini style="z-index:100;padding-bottom:45px;padding-right:5px">
+    <button ion-fab color="sdark" (tap)="search()" ><ion-icon style="zoom:1.2;" name="search"></ion-icon></button>
+</ion-fab>

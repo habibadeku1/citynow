@@ -1,0 +1,14 @@
+<ion-content class="chats-options-page-content">
+  <ion-list class="options">
+
+    <button style="background-color:#FFFFD5" *ngIf="checkuser" ion-item class="option option-logout" (click)="deleteGPost()">
+      <div class="option-name">Delete this post</div>
+    </button> 
+
+
+      <button style="background-color:#FFFFD5" *ngIf="!checkuser" ion-item (click)="reportPost(selectedCity._id)"> 
+          <div class="option-name" style="color:red">Report this post</div>
+        </button>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+    
+      <ion-toolbar style="min-height:38px" color="pdark">  
+
+          <ion-buttons left>
+              <button ion-button class="dismiss-button" (tap)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+            </ion-buttons>
+    
+        <div style="padding-left:10px; font-size:14px;width:90%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:white" >Search on CityNow</div>
+          
+      </ion-toolbar> 
+ 
+    
+</ion-header>
+
+<ion-content >
+ 
+  <div *ngIf="isGuest" style="padding:7px">
+
+<div style="font-size:12px;text-align:center;font-weight:bold;padding-bottom:4px"> Search for news, services, products etc in {{pcity}} city </div>
+
+    <ion-searchbar style="height:40px;border-radius:5px" 
+    autofocus
+    class="seach-bar"
+    placeholder="Search here..."
+    color="plight"
+    [showCancelButton]="true"
+    (ionInput)="updateSubscription($event.target.value); "
+    (ionClear)="updateSubscription(undefined);">
+    </ion-searchbar>
+ 
+
+<br>
+
+<ion-list >
+        <div *ngFor="let post of posts | async" >
+        <button (tap)="showpage(post.cpid,post.type)"  style="width:100%;background-color:white;text-align:left;padding-left:10px;padding-right:10px;padding-bottom:10px">
+          <ion-item >
+          <div *ngIf="post.uptitle" style="font-size:11px;font-style:normal;color:#98aa00;font-weight:bold" >{{post.uptitle.slice(0,30) + "..."}}<br></div>
+          <div *ngIf="post.updescr" style="font-size:13px;font-style:italic" >{{post.updescr.slice(0,50) + "..."}}</div>
+          </ion-item>
+         </button>
+        </div>
+</ion-list>
+
+  </div> 
+
+  <div *ngIf="!isGuest" style="text-align:center;padding-top:5px;margin-bottom:-3px">
+      <button  (tap)="loginpage()" ion-text style="background-color:white;text-align:center"  >
+        
+        <div style="font-size:14px;color:#888;font-style:italic;padding-left:8px;padding-right:8px;text-align:center;padding-top: 50%"> You are viewing as guest. Click here to Signup for a user account. </div>
+       
+      </button>
+  </div>
+
+
+
+
+</ion-content>

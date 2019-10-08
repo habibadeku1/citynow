@@ -1,0 +1,33 @@
+<ion-content >
+ 
+    <div *ngIf="!isGuest" >
+<ion-list style="text-align:left">
+
+    <ion-item style="height:65px" *ngFor="let group of groups | async" >
+
+    <button style="height:60px" ion-item no-lines (tap)="showGroupPosts(group)"> 
+                     
+    <div style="margin-top:10px;font-weight:bold;font-size:14px;text-transform:uppercase">  {{group.title}} 
+        
+        <div *ngIf="group.followIds.indexOf(userid) == -1 "> <ion-badge style="float:right;margin-top:-1px;font-size:10px;color:white" color="primary" item-end small>Not Following</ion-badge> </div>
+
+        <div *ngIf="group.followIds.indexOf(userid) != -1 "> <ion-badge style="float:right;margin-top:-1px;font-size:10px;color:white" color="sdark" item-end small>Following</ion-badge> </div>
+        
+    </div>
+            </button> 
+ 
+    </ion-item>  
+          
+      </ion-list> 
+
+    </div>
+
+    <div *ngIf="isGuest" style="text-align:center;padding-top:5px;margin-bottom:-3px">
+            <button  (tap)="loginpage()" ion-text style="background-color:white;text-align:center"  >
+              
+              <div style="font-size:14px;color:#888;font-style:italic;padding-left:8px;padding-right:8px;text-align:center;padding-top: 50%"> You are viewing as guest. Click here to Signup for a user account. </div>
+             
+            </button>
+        </div>
+
+</ion-content>

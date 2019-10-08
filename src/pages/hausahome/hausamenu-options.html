@@ -1,0 +1,34 @@
+<ion-content class="chats-options-page-content">
+  <ion-list class="options">
+    <button ion-item class="option option-profile" (click)="editProfile()">
+      <ion-icon name="contact" class="option-icon"></ion-icon>
+      <div class="option-name">A Takaice</div>
+    </button>
+
+
+    <button *ngIf="checklang=='Hausa'" ion-item class="option option-profile" (click)="updateLangE()">
+      <div class="option-name">Change to English</div>
+    </button>
+
+    <button disabled ion-item class="option option-profile" (click)="editProfile()">
+        <div class="option-name">Sauya Birni</div>
+      </button>
+
+    <button ion-item class="option option-logout" (click)="logout()">
+      <ion-icon name="log-out" class="option-icon"></ion-icon>
+      <div class="option-name">Fita</div> 
+    </button>  
+
+    <button *ngIf="checkadmin=='admin'" ion-item (click)="adminpost()">
+        <ion-icon name="admin-post" class="option-icon"></ion-icon>
+        <div class="option-name">Admin Headline Post</div>
+      </button>
+
+      <button *ngIf="checkadmin=='admin'" ion-item (click)="approvepost()">
+          <ion-icon name="admin-post" class="option-icon"></ion-icon>
+          <div class="option-name">Admin Approve Posts</div>
+        </button>
+  
+
+  </ion-list>
+</ion-content>

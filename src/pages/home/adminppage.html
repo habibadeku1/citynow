@@ -1,0 +1,347 @@
+<ion-header>
+    
+                <ion-toolbar style="min-height:38px" color="pdark"> 
+                                
+            <ion-buttons left>
+                <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon name="arrow-back"></ion-icon></button>
+              </ion-buttons>
+    
+            <div style="font-size:12px;font-weight:bold;color:white"> Post News Headlines to Kaduna city </div>
+    
+            <ion-buttons end>
+                
+                      <button ion-button class="done-button" (tap)="save()">POST</button>
+                
+                    </ion-buttons>
+    
+        </ion-toolbar>
+    
+    </ion-header>
+    
+    <ion-content style="background-color:#F4F4F4" >
+        
+    <form [formGroup]="eForm1" >
+                    
+        <hr>
+        <div style="text-align:center">
+        &nbsp;&nbsp;
+        <div style="display:inline">  <img *ngIf="thumb" [src]="thumb" style="width:30px;border-radius: 50%;margin-bottom:-6px">
+        </div>    
+        &nbsp;&nbsp;
+        
+        </div> 
+        <hr>  
+        <ion-item>
+            <ion-select style="font-size: 15px"  formControlName="headline">
+            <ion-option value="6 A.M Kaduna city headlines">6 A.M Kaduna city headlines</ion-option>
+            <ion-option value="12 Noon Kaduna city headlines">12 Noon Kaduna city headlines</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+                <ion-input formControlName="allsource" style="font-size:14px;" placeholder="Source of News"></ion-input>
+        </ion-item>
+
+        <ion-item>
+                <ion-input formControlName="uptitle1" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr1" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource1" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html1" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid1" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+              
+            <ion-item>
+                    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image1" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 1(optional)" readonly>
+    
+            <ion-fab  right style="padding-right:10px;">
+                    <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture1()" ><ion-icon name="images"></ion-icon></button>
+           </ion-fab>
+            </ion-item>
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle2" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr2" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource2" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html2" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid2" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image2" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 2(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture2()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle3" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr3" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource3" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html3" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid3" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image3" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 3(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture3()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle4" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr4" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource4" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html4" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid4" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image4" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 4(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture4()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle5" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr5" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource5" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html5" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid5" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image5" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 5(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture5()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle6" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr6" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource6" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html6" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid6" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image6" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 6(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture6()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle7" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr7" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource7" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html7" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid7" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image7" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 7(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture7()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle8" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr8" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource8" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html8" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid8" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image8" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 8(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture8()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle9" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr9" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource9" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html9" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid9" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image9" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 9(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture9()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        <br><br>
+        <ion-item>
+                <ion-input formControlName="uptitle10" style="font-size:15px;" placeholder="News title"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+         <ion-textarea formControlName="updescr10" rows="8" style="font-size:14px;" placeholder="Write the news story here..."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="upsource10" style="font-size:14px;" placeholder="Source of your story(optional)"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                 <ion-input formControlName="html10" style="font-size:14px;" placeholder="Add a URL(optional)"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                    <ion-input formControlName="videoid10" style="font-size:14px;" placeholder="Add a Youtube Video id(optional)"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image10" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="image 10(optional)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture10()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+    
+        
+    </form>
+  
+    
+    </ion-content>

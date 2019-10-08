@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar *ngIf="searching" color="pdark" style="min-height:38px">
+    <ion-searchbar style="min-height:38px" 
+      autofocus
+      class="seach-bar"
+      color="plight" 
+      [showCancelButton]="true"
+      (ionInput)="updateSubscription($event.target.value); searching = true;"
+      (ionClear)="updateSubscription(undefined); searching = false;">
+      </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="!searching" color="pdark" style="min-height:38px"> 
+    <div style="font-size:14px; color:white;padding-left:5px">Fara tattaunawa da wani/wata a {{pcity}} city</div>
+
+    <ion-buttons left>
+      <button ion-button class="dismiss-button" (tap)="viewCtrl.dismiss()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button class="search-button" (tap)="searching = true"><ion-icon name="search" style="zoom:1.5;line-height:0px;margin-top:0px;"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="new-chat">
+  <ion-list class="users">
+    <button ion-item *ngFor="let user of users | async" class="user" (tap)="addChat(user)">
+      <img class="user-picture" [src]="getPic(user.thumbId)">
+      <h2 class="user-name"><font style="font-style:italic">{{user.nname}}</font>~{{user.fname}} {{user.sname}}</h2> 
+    </button>
+  </ion-list>
+</ion-content>

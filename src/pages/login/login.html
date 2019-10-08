@@ -1,0 +1,56 @@
+
+
+<ion-content class="login-page-content" style="background-image: url(assets/black-city-skyline.jpg);background-repeat:no-repeat;background-size:cover">
+
+  <br> 
+  <br>
+  <br><br>
+
+  <div style="text-align:center"><img style="width: 200px;" src="assets/logo.png">
+  </div>    
+        
+    <br>
+    <br><br>
+    
+
+    <div style="padding-left:10px;padding-right:10px;font-size:25px;font-weight:bold;color:white;text-align:center;width:100%">Stay connected to your city, never miss a moment of what's happening</div>
+     
+      
+        <ion-card-content>
+
+          <br><br>
+
+              <div style="text-align:center;margin-bottom:-3px;font-size:13px;color:white">Have an account on CityNow? Login</div>
+
+            
+              <ion-item style="background-color:transparent">
+                  <ion-label floating>Enter your email</ion-label> 
+                  <ion-input text-center style="font-size:18px;color:white;font-weight:bold;" [(ngModel)]="user" type="email"></ion-input>
+                </ion-item>
+              <div style="font-size:10px; text-align:center;color:#888">//Your secure one time password will be sent to your email</div>
+
+              <button style="width:80px;height:30px;float:right" ion-button color="secondary" class="button button-block" (click)="login()" round><ion-icon color="blacky" name="lock" item-left></ion-icon> &nbsp; <font style="color:black">Login</font></button>
+ 
+            <br>
+            <br>
+            <br> 
+              
+              <div style="text-align:center"><button style="background-color:transparent;font-size:13px;color:white" (click)="signup()" > Don't have an account yet?<font style="font-size:16px;color:#98aa00;font-weight:bold"> Sign up now >></font></button></div>
+            
+            <br>
+
+            <div style="text-align:center"><button style="background-color:transparent;font-size:12px;color:white" (click)="guestup()" >OR...<font style="font-size:15px;color:#F8F7F3;font-weight:bold"> <u> Continue as guest!</u></font></button></div>
+
+            
+        </ion-card-content>
+
+        
+      
+  
+
+<br>
+
+
+  
+    
+</ion-content>

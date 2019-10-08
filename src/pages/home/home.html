@@ -1,0 +1,41 @@
+<ion-header >
+  <ion-navbar  style="min-height:38px;background-color:black" color="blacky"> 
+
+    <div style="text-align:left;padding-left:5px" >
+      <img style="width: 110px;float:left" src="assets/logo2.png">       
+    </div> 
+    <div style="padding-left:3px; margin-top:15px;font-size:11px;font-weight:normal;color:white;font-style:italic">...stay connected to your city</div>
+
+    <ion-buttons *ngIf="isGuest" end>    
+      
+            <button ion-button icon-only class="options-button" (tap)="menuOptions()">
+              <img *ngIf="picture" [src]="picture" style="width:35px;height:35px;border-radius: 50%;background:#999;padding:1px">   
+            </button> 
+
+   </ion-buttons>
+
+   <ion-buttons *ngIf="!isGuest" end>     
+      
+              <div style="line-height:15px;color:white;padding-right:2px;font-weight:bold;">Guest</div> 
+ 
+   </ion-buttons>
+
+  </ion-navbar> 
+</ion-header>   
+
+<ion-content >
+  <super-tabs  *ngIf="!isGuest" toolbarBackground="plight" indicatorColor="blacky" badgeColor="pdark" toolbarColor="blacky" tabsPlacement="bottom" >
+    <super-tab [root]="page1"  title="Kaduna" ></super-tab>
+    <super-tab [root]="page2"  title="Favorites" ></super-tab>     
+    <super-tab [root]="page3"  title="People" ></super-tab>
+    <super-tab [root]="page4"  title="Shop" ></super-tab>    
+  </super-tabs>
+
+      <super-tabs *ngIf="isGuest" toolbarBackground="plight" indicatorColor="blacky" badgeColor="pdark" toolbarColor="blacky" tabsPlacement="bottom" >
+        <super-tab [root]="page1" title={{pcity}} badge={{citybadge}} ></super-tab>
+        <super-tab [root]="page2" title="Favorites" badge={{groupbadge}} ></super-tab>     
+        <super-tab [root]="page3" title="People" badge={{cbadge}} ></super-tab>
+        <super-tab [root]="page4"  title="Shop" ></super-tab>            
+      </super-tabs>
+
+</ion-content>

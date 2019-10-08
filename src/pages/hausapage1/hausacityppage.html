@@ -1,0 +1,99 @@
+<ion-header>
+    
+        <ion-toolbar style="min-height:38px" color="pdark"> 
+            
+            <ion-buttons left>
+                <button ion-button class="dismiss-button" (click)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+              </ion-buttons>
+    
+            <div style="font-size:14px;font-weight:bold;color:white"> Aika sabon labarin Kaduna </div>
+    
+            <ion-buttons end>
+                
+                      <button ion-button class="done-button" (tap)="save()">AIKA</button>
+                
+                    </ion-buttons>
+    
+        </ion-toolbar>
+    
+    </ion-header>
+    
+    <ion-content style="background-color:#F8F8F8" >
+
+
+
+                 
+                <div style="text-align:center; font-size:9px; color:red; padding:4px " >**A san cewa duk labarai da ake aikawa ana lura da su, kuma masu anfani da shafin za su dauki nawin duk sakonnin da suka tura** </div>
+    
+
+
+    <form [formGroup]="eForm1" >
+                    
+        <hr>
+        <div style="text-align:center">
+        &nbsp;&nbsp;
+        <div style="display:inline">        <img *ngIf="picture" [src]="picture" style="width:30px;border-radius: 50%;margin-bottom:-6px">
+        </div>    
+        &nbsp;&nbsp; 
+        
+        </div> 
+        <hr>   
+        <ion-item>
+            <ion-input formControlName="uptitle" style="font-size:14px;" placeholder="Jigo(zabi ne)"></ion-input>
+        </ion-item>  
+ 
+        <ion-item>
+         <ion-textarea [(ngModel)]="updescr" formControlName="updescr" rows="8" style="font-size:16px;" placeholder="Rubuta sakon ka/ki a nan..."></ion-textarea>
+        </ion-item> 
+    
+
+ 
+
+        <ion-item>
+            <ion-input formControlName="upsource" style="font-size:14px;" placeholder="Majiyar labarin ka/ki(zabi ne)"></ion-input>
+        </ion-item>
+
+        <ion-item>
+             <ion-input formControlName="html" style="font-size:14px;" placeholder="Sanya mahadin shafin yanar gizo(zabi ne)"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+                <ion-input formControlName="videoid" style="font-size:14px;" placeholder="Sanya mahadin bidiyo na YouTube(zabi ne)"></ion-input>
+        </ion-item>
+
+        <br>
+        
+        <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image1" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="Hoto na 1(zabi ne)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item> 
+
+        <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image2" style="font-size:13px;width:80%;text-align:center;font-style:italic"  placeholder="Hoto na 2(zabi ne)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="primary" (tap)="selectUploadPicture2()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+        <ion-item>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="image3" style="font-size:13px;width:80%;text-align:center;font-style:italic"   placeholder="Hoto na 3(zabi ne)" readonly>
+
+        <ion-fab  right style="padding-right:10px;">
+                <button style="padding-bottom:0px;zoom:0.5;" ion-fab color="slight" (tap)="selectUploadPicture3()" ><ion-icon name="images"></ion-icon></button>
+       </ion-fab>
+        </ion-item>
+
+
+        
+    </form>
+  
+    <hr style="clear:both; padding-top:5px">
+    
+
+    
+    
+    </ion-content>

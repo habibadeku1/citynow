@@ -1,0 +1,115 @@
+<ion-header>
+    
+      <ion-toolbar style="min-height:38px" color="pdark">  
+
+          <ion-buttons left>
+              <button ion-button class="dismiss-button" (tap)="viewCtrl.dismiss()"><ion-icon style="zoom:1.5;" name="arrow-back"></ion-icon></button>
+            </ion-buttons>
+    
+        <div style="padding-left:10px; font-size:14px;width:90%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:white" >{{title}}</div>
+    
+        <div *ngIf="!title" style="padding-left:10px; font-size:14px;width:90%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:white" >**no title**</div>
+      
+        <ion-buttons end>     
+                <button ion-button icon-only class="options-button" (tap)="menuOptions(selectedPage)"><ion-icon style="zoom:1;" name="more"></ion-icon></button>
+              </ion-buttons>
+
+      </ion-toolbar> 
+ 
+    
+</ion-header>
+
+<ion-content>
+ 
+ 
+
+     <div *ngIf="title" style="padding-top:5px;padding-left:7px;padding-right:7px;font-size:14px; font-weight:bold; line-height:20px; color:black;text-align:center;">
+         
+        {{title}}
+        </div>
+
+        <div style="padding-top:5px;padding-left:7px;padding-right:7px;"><img style="border-radius: 50%;width: 30px;float: left;" [src]="posterpicture" (tap)="viewprofile(selectedPage)">
+          
+            <div style="margin-top:0px;line-height:30px">  <span style="margin-top:0px; text-align:left; font-size:10px;" (tap)="viewprofile(selectedPage)">&nbsp;&nbsp;Posted by: {{postername}} </span> <div style="margin-top:0px; float:right;font-size:9px">{{ createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }}</div></div>               
+          </div>
+
+          <div style="text-align:left; font-size:16px; line-height:20px; padding-top:5px;padding-left:7px;padding-right:7px;" >
+                
+               
+          
+              <div *ngIf="picture">
+                  <br>
+                      <img style="text-align:center; width:90%;height:auto; margin-top:0px" (tap)="presentImage(img1)" #img1 [src]="picture">
+          
+              </div>
+              <div *ngIf="picture2">
+                  <br>
+          
+                  <img style="text-align:center; width:90%;height:auto; margin-top:0px" (tap)="presentImage(img2)" #img2 [src]="picture2">
+                  
+                </div>
+                <div *ngIf="picture3">
+                    <br>
+                    <img style="text-align:center; width:90%;height:auto; margin-top:0px" (tap)="presentImage(img3)" #img3 [src]="picture3">
+                  </div>
+          
+              <div *ngIf="videoid" class="card">            
+              <ion-item>
+               <div  class="video-container">
+                  <iframe [src]= "domSanitizer.bypassSecurityTrustResourceUrl(youtube)" frameborder="0" width="560" height="315"></iframe>
+              </div>
+              </ion-item>
+              </div>
+          
+              <div style="white-space:pre-line"> {{updescr}} </div>
+              
+                  <div *ngIf="html" style="width:98%;color:#222;text-align:left;font-size:14px;text-transform: none;background-color:white;text-transform:none" ><a style="color:#222" href="#" onclick="domSanitizer.bypassSecurityTrustResourceUrl(url)"><u>{{html}}</u></a></div> 
+              
+          
+                  <div *ngIf="upsource" style="font-size:12px; line-height:20px; color:#484848;text-align:left">Source: {{upsource}}</div>              
+                
+              </div>
+          
+
+
+
+    <hr style="clear:both;max-width:95%">
+    
+
+    <div >
+            
+                        <div style="text-align:center; margin-top:-5px">
+            
+                             <button style="height:18px; " color="sdark" ion-button icon-left clear small (tap)="pushgood(selectedPage._id)" > 
+                                <ion-icon name="thumbs-up" style="zoom:1.0;"></ion-icon>
+                                <div style="text-transform:none; font-size:11px">{{selectedPage.goodcount}} Muradi</div> 
+                              </button>
+            
+                              <button style="height:18px" color="danger" ion-button icon-left clear small (tap)="pushnotgood(selectedPage._id)" > 
+                                  <ion-icon name="thumbs-down" style="zoom:1.0;"></ion-icon>
+                                  <div style="text-transform:none; font-size:11px">{{selectedPage.notgoodcount}} Rashin Muradi</div>
+                                </button>
+        
+                                <button style="height:18px; color:#888" ion-button icon-left clear small (tap)="showComments(selectedPage)">
+                                    <ion-icon name="text" style="zoom:1.0;"></ion-icon>
+                                    <div style="text-transform:none; font-size:11px">                                            
+                                      {{selectedPage.comcount}} Tsokaci</div>
+                                  </button>
+            
+                        </div>
+        
+            
+                      </div>
+        
+                 
+                  <div *ngIf="selectedPage.lastComment"> 
+                      <div *ngIf="selectedPage.lastComment.type == 'text'">
+                        <div style="float:left;padding-left:10px;padding-right:5px;font-size:12px;margin-bottom:0px;margin-top:0px;color:#777;font-style:italic;padding-bottom:2px;width:99%;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">Tsokacin Karshe:  {{ selectedPage.lastComment.createdAt | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm a' }} <font style="font-style:normal">na <u>{{selectedPage.lastComment.profilefName}}</u> : {{selectedPage.lastComment.content}} </font> </div>
+                      </div>
+                  </div>
+                 
+    
+    <hr style="clear:both;padding-top:5px">
+    
+
+</ion-content>
